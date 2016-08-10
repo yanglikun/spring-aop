@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    <!-- spring和aspectj结合-->
+
+    <context:component-scan base-package="io.github.yanglikun.aspectjStyle.xml"/>
+
+    <!--配置属性 proxy-target-class="true"表示强制使用cglib -->
+    <aop:config>
+        <aop:pointcut id="businessPointcut"
+                      expression="execution(* io.github.yanglikun.aspectjStyle.xml.target.*.*(..))"/>
+        <aop:aspect ref="aspectExample">
+            <aop:before method="beforeExecute" pointcut-ref="businessPointcut"/>
+            <aop:around method="aroundExecute" pointcut-ref="businessPointcut"/>
+            <aop:after-throwing method="afterThrowingExecute" pointcut-ref="businessPointcut" throwing="ex"/>
+            <aop:after-returning method="afterReturningExecute" pointcut-ref="businessPointcut"/>
+            <aop:after method="afterFinallyExecute" pointcut-ref="businessPointcut"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

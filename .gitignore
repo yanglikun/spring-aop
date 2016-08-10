@@ -1,0 +1,13 @@
+﻿#下文中的“当前目录”是指.gitignore文件所在的目录
+
+#所有路径下的文件、文件夹
+.idea
+
+#所有路径下iml后缀的文件
+*.iml
+
+#仅当前目录下一层目录下的 target目录及其内容
+/*/target/
+
+#去除jrebel
+rebel.xml
