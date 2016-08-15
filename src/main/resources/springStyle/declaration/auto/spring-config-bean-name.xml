@@ -19,7 +19,7 @@
     </bean>
 
     <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
-        <property name="beanNames" value="user*"/>
+        <property name="beanNames" value="*service"/>
         <property name="interceptorNames">
             <list>
                 <value>beforeAdvisor</value>

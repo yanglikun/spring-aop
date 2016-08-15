@@ -2,6 +2,7 @@ package io.github.yanglikun.aspectjStyle.annotation.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,9 +12,18 @@ import org.springframework.stereotype.Component;
 @Component //这个@Component不能少，要不然spring不会加载这个类
 public class AspectExample {
 
+//
+//    @Before("execution(* io.github.yanglikun.aspectjStyle.annotation.target.*.*(..))")
+//    @Order(2) //加入Order来指定执行顺序
+//    public void beforeExecute2() {
+//        System.out.println("@Aspect.@Before.......2");
+//    }
+
+
     @Before("execution(* io.github.yanglikun.aspectjStyle.annotation.target.*.*(..))")
-    public void beforeExecute() {
-        System.out.println("@Aspect.@Before");
+    @Order(1)
+    public void beforeExecute1() {
+        System.out.println("@Aspect.@Before.......1");
     }
 
     @Around("execution(* io.github.yanglikun.aspectjStyle.annotation.target.*.*(..))")
@@ -23,6 +33,7 @@ public class AspectExample {
         System.out.println("@Aspect.@Around[after|" + retVal + "]");
         return retVal;
     }
+
 
     @AfterThrowing(
             pointcut = "execution(* io.github.yanglikun.aspectjStyle.annotation.target.*.*(..))",

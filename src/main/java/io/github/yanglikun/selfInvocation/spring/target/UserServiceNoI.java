@@ -8,11 +8,6 @@ import org.springframework.stereotype.Component;
 @Component("userService")
 public class UserServiceNoI {
 
-
-    public UserServiceNoI(){
-        System.out.println("构造函数。。。");
-    }
-
     public void queryAllUser() {
         System.out.println("查询用户");
         saveUser();

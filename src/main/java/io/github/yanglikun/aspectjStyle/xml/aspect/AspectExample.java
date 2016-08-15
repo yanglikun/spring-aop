@@ -14,7 +14,7 @@ public class AspectExample {
     }
 
     public Object aroundExecute(ProceedingJoinPoint pjp) throws Throwable {
-        System.out.println("AspectExample.beforeExecute[before]");
+        System.out.println("AspectExample.aroundExecute[before]");
         Object retVal = pjp.proceed();
         System.out.println("AspectExample.aroundExecute[after|" + retVal + "]");
         return retVal;

@@ -25,7 +25,7 @@ public class TestCode {
     }
 
     /**
-     * 开始没有self-invocation问题
+     * 没有self-invocation问题
      */
     @Test
     public void testCglib() {

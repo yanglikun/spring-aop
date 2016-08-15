@@ -12,7 +12,7 @@ public class TestCode {
     @Test
     @SuppressWarnings("Duplicates")
     public void testAutoBeanName() {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("declaration/auto/spring-config-bean-name.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("springStyle/declaration/auto/spring-config-bean-name.xml");
         UserService proxy = (UserService) ctx.getBean("userService");
         String ret = proxy.queryAllUser();
         System.out.println("执行结果:" + ret);
@@ -22,7 +22,7 @@ public class TestCode {
     @Test
     @SuppressWarnings("Duplicates")
     public void testAutoAdvisor() {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("declaration/auto/spring-config-advisor.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("springStyle/declaration/auto/spring-config-advisor.xml");
         UserService proxy = (UserService) ctx.getBean("userService");
         String ret = proxy.queryAllUser();
         System.out.println("执行结果:" + ret);

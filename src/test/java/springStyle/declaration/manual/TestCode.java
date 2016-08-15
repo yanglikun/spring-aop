@@ -12,7 +12,7 @@ public class TestCode {
     @Test
     @SuppressWarnings("Duplicates")
     public void test() {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("declaration/manual/spring-config.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("springStyle/declaration/manual/spring-config.xml");
         UserService proxy = (UserService) ctx.getBean("userServiceProxy");
         String ret = proxy.queryAllUser();
         System.out.println("执行结果:" + ret);
@@ -23,7 +23,7 @@ public class TestCode {
     @Test
     @SuppressWarnings("Duplicates")
     public void testFilterMethod() {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("declaration/manual/spring-config-filter-method.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("springStyle/declaration/manual/spring-config-filter-method.xml");
         UserService proxy = (UserService) ctx.getBean("userServiceProxy");
         String ret = proxy.queryAllUser();
         System.out.println("执行结果:" + ret);

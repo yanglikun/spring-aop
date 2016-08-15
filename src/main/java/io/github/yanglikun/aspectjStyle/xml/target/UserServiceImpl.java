@@ -10,7 +10,7 @@ public class UserServiceImpl implements UserService {
 
     public String queryAllUser() {
         System.out.println("queryAllUser");
-        int i=1/0;
+//        int i=1/0;
         return "querySuc";
     }
 
