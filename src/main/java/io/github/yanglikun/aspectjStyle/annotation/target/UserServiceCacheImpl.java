@@ -9,12 +9,13 @@ import org.springframework.stereotype.Service;
 @Service("userServiceCache")
 public class UserServiceCacheImpl {
 
+//    @Cache("redis_key_queryAllUserWithCache")
     public String queryAllUser() {
-        return "张三";
+        return "张三1";
     }
 
     @Cache("redis_key_queryAllUserWithCache")
     public String queryAllUserWithCache() {
-        return "张三";
+        return "张三2";
     }
 }

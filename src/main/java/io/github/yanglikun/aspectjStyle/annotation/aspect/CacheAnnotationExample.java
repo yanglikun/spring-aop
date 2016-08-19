@@ -15,9 +15,10 @@ public class CacheAnnotationExample {
 
     @Around(value = "@annotation(cache)")
     public Object interceptMethod(ProceedingJoinPoint joinPoint, Cache cache) throws Throwable {
-        String cacheValue = "李四";
-        if (cacheValue != null && !cacheValue.isEmpty()) {
-            return cache.value() + cacheValue;
+        String cacheKey = cache.value();
+        String cacheValue = "李四";//实际这里会用cacheKey从缓存系统获取
+        if (cacheKey != null && !cacheKey.isEmpty()) {
+            return "[" + cacheKey + "]" + cacheValue;
         } else {
             return joinPoint.proceed();
         }

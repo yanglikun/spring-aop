@@ -10,21 +10,14 @@ import org.springframework.stereotype.Component;
  */
 @Aspect
 @Component //这个@Component不能少，要不然spring不会加载这个类
+//@Order(2)测试顺序的时候用
 public class AspectExample {
 
-//
-//    @Before("execution(* io.github.yanglikun.aspectjStyle.annotation.target.*.*(..))")
-//    @Order(2) //加入Order来指定执行顺序
-//    public void beforeExecute2() {
-//        System.out.println("@Aspect.@Before.......2");
-//    }
-
-
     @Before("execution(* io.github.yanglikun.aspectjStyle.annotation.target.*.*(..))")
-    @Order(1)
     public void beforeExecute1() {
         System.out.println("@Aspect.@Before.......1");
     }
+
 
     @Around("execution(* io.github.yanglikun.aspectjStyle.annotation.target.*.*(..))")
     public Object aroundExecute(ProceedingJoinPoint pjp) throws Throwable {
