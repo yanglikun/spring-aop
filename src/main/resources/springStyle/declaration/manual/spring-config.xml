@@ -33,4 +33,29 @@
         </property>
     </bean>
 
+    <bean id="notOriginAroundAdvice" class="io.github.yanglikun.springStyle.advice.notorigin.NotOriginAroundAdvice">
+       <property name="realService">
+           <bean  class="io.github.yanglikun.springStyle.target.notorigin.OriginService">
+               <property name="name" value="代理类"/>
+           </bean>
+       </property>
+    </bean>
+
+
+    <bean id="notCallOrigin" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <bean class="io.github.yanglikun.springStyle.target.notorigin.OriginService">
+                <property name="name" value="被代理类"/>
+            </bean>
+        </property>
+        <!--因为被代理类不会被调用，所以上面的配置可以用targetClass代替-->
+        <!--<property name="targetClass" value="io.github.yanglikun.springStyle.target.notorigin.OriginService"/>-->
+        <property name="interceptorNames">
+            <list>
+                <value>notOriginAroundAdvice</value>
+            </list>
+        </property>
+    </bean>
+
+
 </beans>
