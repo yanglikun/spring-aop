@@ -21,6 +21,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Component("userService")
 public class UserServiceNoI {
 
+    public UserServiceNoI() {
+        System.out.println("实例化UserServiceNoI");
+    }
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -37,5 +41,9 @@ public class UserServiceNoI {
         jdbcTemplate.execute("insert into t(name) values('ls')");
     }
 
+    public static void main(String[] args) {
+        System.out.println(Integer.MAX_VALUE);//2147483647
+        System.out.println(Float.MAX_VALUE);//3.4028235E38
+    }
 
 }

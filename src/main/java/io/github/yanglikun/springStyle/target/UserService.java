@@ -7,7 +7,7 @@ public interface UserService {
 
     String queryAllUser();
 
-    void saveUser();
+    void saveUser(String pin);
 
     void updateUser();
 

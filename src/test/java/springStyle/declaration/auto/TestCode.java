@@ -16,7 +16,7 @@ public class TestCode {
         UserService proxy = (UserService) ctx.getBean("userService");
         String ret = proxy.queryAllUser();
         System.out.println("执行结果:" + ret);
-        proxy.saveUser();
+        proxy.saveUser("zhangsan");
     }
 
     @Test
@@ -26,6 +26,6 @@ public class TestCode {
         UserService proxy = (UserService) ctx.getBean("userService");
         String ret = proxy.queryAllUser();
         System.out.println("执行结果:" + ret);
-        proxy.saveUser();
+        proxy.saveUser("zhangsan");
     }
 }

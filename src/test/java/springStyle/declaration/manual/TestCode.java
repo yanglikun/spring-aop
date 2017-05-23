@@ -1,6 +1,7 @@
 package springStyle.declaration.manual;
 
 import io.github.yanglikun.springStyle.target.UserService;
+import io.github.yanglikun.springStyle.target.UserServiceNoInterface;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,7 +17,7 @@ public class TestCode {
         UserService proxy = (UserService) ctx.getBean("userServiceProxy");
         String ret = proxy.queryAllUser();
         System.out.println("执行结果:" + ret);
-        proxy.saveUser();
+        proxy.saveUser("zhangsan");
     }
 
 
@@ -27,6 +28,17 @@ public class TestCode {
         UserService proxy = (UserService) ctx.getBean("userServiceProxy");
         String ret = proxy.queryAllUser();
         System.out.println("执行结果:" + ret);
-        proxy.saveUser();
+        proxy.saveUser("zhangsan");
     }
+
+    @Test
+    @SuppressWarnings("Duplicates")
+    public void userServiceNoInterfaceProxy() {
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("springStyle/declaration/manual/spring-config.xml");
+        UserServiceNoInterface proxy = (UserServiceNoInterface) ctx.getBean("userServiceNoInterfaceProxy");
+        String ret = proxy.queryAllUser();
+        System.out.println("执行结果:" + ret);
+        proxy.saveUser("zhangsan");
+    }
+
 }

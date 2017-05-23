@@ -14,8 +14,8 @@ public class UserServiceImpl implements UserService {
         return "querySuc";
     }
 
-    public void saveUser() {
-        System.out.println("saveUser");
+    public void saveUser(String pin) {
+        System.out.println("saveUser:"+pin);
     }
 
     public void updateUser() {
