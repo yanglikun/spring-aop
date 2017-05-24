@@ -59,7 +59,23 @@
 
     <bean id="serviceNoDefaultConstructor" class="org.springframework.aop.framework.ProxyFactoryBean">
         <property name="target">
-            <bean class="io.github.yanglikun.springStyle.target.ServiceNoDefaultConstructor">
+            <bean class="io.github.yanglikun.springStyle.target.NoDefaultConstructorService">
+                <constructor-arg value="被代理类"></constructor-arg>
+            </bean>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>aroundAdvice</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="serviceNoDefaultConstructor2" class="org.springframework.aop.framework.CustomProxyFactoryBean">
+        <property name="aopProxyFactory">
+            <bean class="org.springframework.aop.framework.CustomDefaultAopProxyFactory"></bean>
+        </property>
+        <property name="target">
+            <bean class="io.github.yanglikun.springStyle.target.NoDefaultConstructorService">
                 <constructor-arg value="被代理类"></constructor-arg>
             </bean>
         </property>

@@ -1,6 +1,6 @@
 package springStyle.declaration.manual;
 
-import io.github.yanglikun.springStyle.target.ServiceNoDefaultConstructor;
+import io.github.yanglikun.springStyle.target.NoDefaultConstructorService;
 import io.github.yanglikun.springStyle.target.UserService;
 import io.github.yanglikun.springStyle.target.UserServiceNoInterface;
 import io.github.yanglikun.springStyle.target.notorigin.OriginService;
@@ -65,7 +65,20 @@ public class TestCode {
     public void serviceNoDefaultConstructorTest() {
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext
                 ("springStyle/declaration/manual/spring-config.xml");
-        ServiceNoDefaultConstructor proxy = (ServiceNoDefaultConstructor) ctx.getBean("serviceNoDefaultConstructor");
+        NoDefaultConstructorService proxy = (NoDefaultConstructorService) ctx.getBean("serviceNoDefaultConstructor");
+        String ret = proxy.test("aaa");
+        System.out.println("执行结果:" + ret);
+    }
+
+    /**
+     * 这个也是无参构造函数因为使用了objenesis,所以使用spring4之前的也可以代理无参构造函数的类
+     * 通过查看spring4也是使用了objenesis
+     */
+    @Test
+    public void serviceNoDefaultConstructor2Test() {
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext
+                ("springStyle/declaration/manual/spring-config.xml");
+        NoDefaultConstructorService proxy = (NoDefaultConstructorService) ctx.getBean("serviceNoDefaultConstructor2");
         String ret = proxy.test("aaa");
         System.out.println("执行结果:" + ret);
     }
