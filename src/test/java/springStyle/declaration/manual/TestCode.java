@@ -1,5 +1,6 @@
 package springStyle.declaration.manual;
 
+import io.github.yanglikun.springStyle.target.ServiceNoDefaultConstructor;
 import io.github.yanglikun.springStyle.target.UserService;
 import io.github.yanglikun.springStyle.target.UserServiceNoInterface;
 import io.github.yanglikun.springStyle.target.notorigin.OriginService;
@@ -51,6 +52,21 @@ public class TestCode {
                 ("springStyle/declaration/manual/spring-config.xml");
         OriginService proxy = (OriginService) ctx.getBean("notCallOrigin");
         String ret = proxy.test(1, "eee");
+        System.out.println("执行结果:" + ret);
+    }
+
+    /**
+     * 这个要切换到spring 4.0版本，要不然会报异常。     *
+     * Caused by: java.lang.IllegalArgumentException: Superclass has no null constructors but no arguments were given
+     * 原因如下：
+     * http://blog.codeleak.pl/2014/07/spring-4-cglib-based-proxy-classes-with-no-default-ctor.html
+     */
+    @Test
+    public void serviceNoDefaultConstructorTest() {
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext
+                ("springStyle/declaration/manual/spring-config.xml");
+        ServiceNoDefaultConstructor proxy = (ServiceNoDefaultConstructor) ctx.getBean("serviceNoDefaultConstructor");
+        String ret = proxy.test("aaa");
         System.out.println("执行结果:" + ret);
     }
 }
