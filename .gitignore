@@ -6,8 +6,7 @@
 #所有路径下iml后缀的文件
 *.iml
 
-#仅当前目录下一层目录下的 target目录及其内容
-/*/target/
+target/
 
 #去除jrebel
 rebel.xml
