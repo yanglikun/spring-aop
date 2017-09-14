@@ -11,7 +11,9 @@ public class Main {
                         .class},
                 invocationHandler);
 
-        proxy.save();
+        System.out.println(proxy.getClass());
+
+        proxy.save("zs",11);
         proxy.count();
     }
 }
