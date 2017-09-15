@@ -172,8 +172,9 @@ public class CglibCallbackTest {
         enhancer.setCallbackFilter(callbackHelper);
         enhancer.setCallbacks(callbackHelper.getCallbacks());
         SampleClass proxy = (SampleClass) enhancer.create();
-        assertEquals("Hello cglib!", proxy.test());
-        assertNotEquals("Hello cglib!", proxy.toString());
+        System.out.println(proxy.test());
+        System.out.println(proxy.toString());
+        System.out.println(proxy.getAge());
         proxy.hashCode();
     }
 }

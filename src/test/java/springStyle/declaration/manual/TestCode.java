@@ -26,11 +26,25 @@ public class TestCode {
 
     @Test
     @SuppressWarnings("Duplicates")
-    public void testFilterMethod() {
+    public void testFilterMethodCglib() {
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext
                 ("springStyle/declaration/manual/spring-config-filter-method.xml");
-        UserService proxy = (UserService) ctx.getBean("userServiceProxy");
+        UserService proxy = (UserService) ctx.getBean("userServiceProxyCglib");
         String ret = proxy.queryAllUser();
+
+        System.out.println("proxyClass:" +proxy.getClass());
+        System.out.println("执行结果:" + ret);
+        proxy.saveUser("zhangsan");
+    }
+
+    @Test
+    public void testFilterMethodJDK() {
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext
+                ("springStyle/declaration/manual/spring-config-filter-method.xml");
+        UserService proxy = (UserService) ctx.getBean("userServiceProxyJDK");
+        String ret = proxy.queryAllUser();
+
+        System.out.println("proxyClass:" +proxy.getClass());
         System.out.println("执行结果:" + ret);
         proxy.saveUser("zhangsan");
     }
