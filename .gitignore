@@ -1,12 +1,46 @@
-﻿#下文中的“当前目录”是指.gitignore文件所在的目录
+﻿# maven ignore
+target/
+*.jar
+*.war
+*.zip
+*.tar
+*.tar.gz
 
-#所有路径下的文件、文件夹
-.idea
+# eclipse ignore
+.settings/
+.project
+.classpath
 
-#所有路径下iml后缀的文件
+# idea ignore
+.idea/
+*.ipr
 *.iml
+*.iws
 
-/*/target/
+# temp ignore
+Logs/
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
 
-#去除jrebel
-rebel.xml
+# system ignore
+.DS_Store
+Thumbs.db
+
+/RemoteSystemsTempFiles/
+#.gitignore
+/.eclipse-pmd
+
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+/build/
+
+### VS Code ###
+.vscode/
