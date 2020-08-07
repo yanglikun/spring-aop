@@ -32,11 +32,22 @@ public class TestCode {
     }
 
 
+    /**
+     * <aop:aspectj-autoproxy /> 这个的规则是
+     * 被代理对象有接口，用jdk动态代理生成 代理对象
+     * 被代理的对象没有接口，用cglib生成 代理对象
+     * <p>
+     * 如果加上了 proxy-target-class=“true”生成的规则是
+     * 不管被代理对象有没有接口，都用cglib生成代理对象
+     */
     @Test
     public void testMainService() {
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("interfaceorimpl/spring-aop-interfaceorimpl.xml");
         MainService mainService = ctx.getBean(MainService.class);
-        System.out.println("mainService:" + mainService.getClass());
+        System.out.println("[mainService]:" + mainService.getClass());
+
+        OrderServiceI orderServiceI = ctx.getBean(OrderServiceI.class);
+        System.out.println("[OrderServiceI]:" + orderServiceI.getClass());
         mainService.save();
     }
 
